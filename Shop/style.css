@@ -4,9 +4,12 @@
 }
 
 body {
-  max-width: 1200px;
   margin: 0 auto;
   font-family: "Open Sans", sans-serif;
+}
+
+.center {
+  padding: 0 calc(50vw - 570px);
 }
 
 .head {
@@ -14,8 +17,9 @@ body {
   background-color: #9CC3FF;
   border-bottom: 1px solid #415A80;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 0 40px 0;
 }
 .head__link {
   font-size: 40px;
@@ -29,6 +33,35 @@ body {
   height: 30px;
   border: 1px solid #415A80;
   outline: none;
+  font-size: 15px;
+  transition: all 0.3s linear;
+}
+.head__btn:hover {
+  color: #FFF;
+  background-color: #415A80;
+  border: 1px solid #415A80;
+}
+.head__btn:active {
+  background-color: #FFB5E1;
+  color: #415A80;
+}
+.head__btn_search {
+  height: 30px;
+  width: 30px;
+  border: 1px solid #415A80;
+  border-left: none;
+  outline: none;
+  font-size: 15px;
+  transition: all 0.3s linear;
+}
+.head__btn_search:hover {
+  color: #FFF;
+  background-color: #415A80;
+  border: 1px solid #415A80;
+}
+.head__btn_search:active {
+  background-color: #FFB5E1;
+  color: #415A80;
 }
 .head__search {
   width: 200px;
@@ -36,20 +69,24 @@ body {
   border: 1px solid #415A80;
   line-height: 38px;
   outline: none;
-  padding: 0 7px;
+  padding: 0 10px;
+  font-size: 15px;
 }
 
 .products {
   display: flex;
-  padding: 40px;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .product-item {
-  width: 150px;
+  max-width: 160px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   border: 1px solid #415A80;
   margin-bottom: 40px;
+  line-height: 0;
 }
 .product-item__img {
   border-bottom: 1px solid #415A80;
@@ -58,7 +95,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2px 10px 10px 10px;
+  flex: 1;
+  padding: 10px;
+  line-height: normal;
 }
 .product-item__title {
   color: #415A80;
@@ -73,6 +112,17 @@ body {
   margin-top: 10px;
   color: #415A80;
   border: 1px solid #415A80;
+  outline: none;
+  transition: all 0.3s linear;
+}
+.by-btn:hover {
+  color: #FFF;
+  background-color: #415A80;
+  border: 1px solid #415A80;
+}
+.by-btn:active {
+  background-color: #FFB5E1;
+  color: #415A80;
 }
 
 /*# sourceMappingURL=style.css.map */
