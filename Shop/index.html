@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+
 <header>
     <div class="head center">
         <div class="head__logo"><a href="#" class="head__link">Logo</a></div>
@@ -32,6 +33,14 @@
     </div>
 </main>
 
-<script src="app.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/cart.js"></script>
+<script>
+    window.onload = () => {
+        new ProductList();
+        new CartList();
+    };
+</script>
+
 </body>
 </html>
