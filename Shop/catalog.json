@@ -1,0 +1,45 @@
+[
+  {
+    "id_product": 123,
+    "product_name": "Ноутбук",
+    "price": 45600
+  },
+  {
+    "id_product": 456,
+    "product_name": "Мышка",
+    "price": 1000
+  },
+  {
+    "id_product": 333,
+    "product_name": "Клавиатура",
+    "price": 4000,
+    "img": "https://via.placeholder.com/160x110/CAC2FF"
+  },
+  {
+    "id_product": 444,
+    "product_name": "Монитор",
+    "price": 30000,
+    "img": "https://via.placeholder.com/160x110/CFE2FF"
+  },
+  {
+    "id_product": 555,
+    "product_name": "Геймпад",
+    "price": 5000,
+    "img": "https://via.placeholder.com/160x110/B0D5E8"
+  },
+  {
+    "id_product": 666,
+    "product_name": "Наушники",
+    "price": 10000,
+    "img": "https://via.placeholder.com/160x110/C2FAFF"
+  },
+  {
+    "id_product": 777,
+    "product_name": "Коврик",
+    "price": 1500,
+    "img": "https://via.placeholder.com/160x110/B0B8E8"
+  },
+  {}
+]
+
+
