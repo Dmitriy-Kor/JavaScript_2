@@ -179,7 +179,6 @@ body {
   color: salmon;
   background: none;
   outline: none;
-  border: none;
   cursor: pointer;
   margin-right: 10px;
   border: 1px solid #415A80;
@@ -188,5 +187,6 @@ body {
 .show {
   display: block;
 }
-
-/*# sourceMappingURL=style.css.map */
+.invisible {
+  display: none;
+}
