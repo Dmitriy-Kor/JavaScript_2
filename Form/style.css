@@ -1,0 +1,100 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  color: #5a5784;
+}
+
+body {
+  background-color: #5a5784;
+}
+
+.form {
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+.form__btn {
+  width: 150px;
+  height: 36px;
+  background-color: #5a5784;
+  border: 3px solid #5a5784;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.3s linear;
+}
+.form__btn:hover {
+  background-color: white;
+  color: #5a5784;
+  transform: scale(1.05);
+}
+.form__btn:active {
+  background-color: #d5d3d3;
+  color: #5a5784;
+  transform: scale(1.05);
+}
+.form__input {
+  padding: 0 10px;
+  width: 200px;
+  height: 30px;
+  border: 3px solid #5a5784;
+  font-size: 15px;
+  font-style: italic;
+  outline: none;
+  transition: all 0.3s linear;
+}
+.form__input:hover {
+  transform: scale(1.05);
+}
+.form__input:focus {
+  transform: scale(1.05);
+  background-color: #5a5784;
+  color: white;
+}
+.form__message {
+  width: 200px;
+  padding: 10px 0 20px 0;
+  color: #3f3d5c;
+}
+.form__text {
+  width: 200px;
+  height: 80px;
+  padding: 10px 10px;
+  border: 3px solid #5a5784;
+  font-size: 15px;
+  font-style: italic;
+  outline: none;
+  resize: none;
+  transition: all 0.3s linear;
+}
+.form__text:hover {
+  transform: scale(1.05);
+}
+.form__text:focus {
+  transform: scale(1.05);
+  background-color: #5a5784;
+  color: white;
+}
+
+.green {
+  border: 3px solid #5d9a48;
+}
+
+.red {
+  border: 3px solid #aa464f;
+}
+
+.error-text {
+  color: #aa464f;
+}
+
+.ok-text {
+  color: #5d9a48;
+}
+
+/*# sourceMappingURL=style.css.map */
