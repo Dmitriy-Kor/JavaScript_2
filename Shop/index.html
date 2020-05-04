@@ -8,21 +8,39 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+
 <header>
     <div class="head center">
         <div class="head__logo"><a href="#" class="head__link">Logo</a></div>
         <form action="#">
             <input type="text" class="head__search"><button type="button" class="head__btn_search"><i class="fas fa-search"></i></button>
         </form>
+        <div class="head__cart">
         <button type="button" class="head__btn">Корзина</button>
+        <div class="cart">
+            <h3 class="cart__title">Товары:</h3>
+            <div class="cart__items">
+
+            </div>
+            <h3 class="cart__sum">Сумма:<span class="cart__price"></span>&#x20BD</h3>
+        </div>
+        </div>
     </div>
 </header>
-<main>
-    <div class="products center">
+<main class="center">
+    <div class="products paddingLR">
 
     </div>
 </main>
 
-<script src="app.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/cart.js"></script>
+<script>
+    window.onload = () => {
+        new ProductList();
+        new CartList();
+    };
+</script>
+
 </body>
 </html>

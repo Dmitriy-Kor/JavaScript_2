@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamburger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="center">
+        <div class="hamburger">
+            <h1 class="hamburger__title">Собери свой бургер!</h1>
+            <form class="hamburger__form" action="#">
+                <h2 class="hamburger__subTitle">Выбери размер:</h2>
+                <div>
+                    <label>
+                        <input type="radio" name="size" class="hamburger__radio" id="small" checked>
+                        <div class="hamburger__radio-text">Маленький</div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="radio" name="size" class="hamburger__radio" id="big">
+                        <div class="hamburger__radio-text">Большой</div>
+                    </label>
+                </div>
+                <h2 class="hamburger__subTitle">Выбери начинку:</h2>
+                <div>
+                    <label>
+                        <input type="checkbox" name="topping" id="cheese" class="hamburger__checkbox">
+                        <div class="hamburger__check-text">Сыр</div>
+                </label></div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="topping" id="bacon" class="hamburger__checkbox">
+                        <div class="hamburger__check-text">Бекон</div>
+                </label></div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="topping" id="tomato" class="hamburger__checkbox">
+                        <div class="hamburger__check-text">Томат</div>
+                    </label>
+                </div>
+                <h2 class="hamburger__subTitle">Выбери дополнительную начинку:</h2>
+                <div>
+                    <label>
+                        <input type="checkbox" name="topping" id="souse" class="hamburger__checkbox">
+                        <div class="hamburger__check-text">Соус</div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox"  name="topping" id="spice" class="hamburger__checkbox">
+                        <div class="hamburger__check-text">Секретные специи</div>
+                    </label>
+                </div>
+            </form>
+            <button id="orderBtn" class="hamburger__btn"><i class="fas fa-hamburger"></i> Заказать!</button>
+            <div class="hamburger__info">
+                <h3 class="hamburger__text">Стоимость: <span class="hamburger__price"></span> &#x20BD</h3>
+                <h3 class="hamburger__text">Калорийность: <span class="hamburger__calories"></span> ккал</h3>
+            </div>
+        </div>
+    </main>
+
+<script>
+    'use strict';
+    class Hamburger {
+        constructor(block = '.hamburger__info') {
+            this.block = block;
+            this.price = 0;
+            this.calories = 0;
+            this.topping = [];
+            this._fetchTopping();
+            this.btnClick();
+            //this.changeForm();
+        }
+        _fetchTopping(){
+            this.topping = [
+                {name: 'big', price: 100, calories: 100},
+                {name: 'small', price: 50, calories: 50},
+                {name: 'cheese', price: 20, calories: 30},
+                {name: 'bacon', price: 30, calories: 50},
+                {name: 'tomato', price: 10, calories: 10},
+                {name: 'souse', price: 10, calories: 10},
+                {name: 'spice', price: 5, calories: 5}
+            ]
+        }
+        reset(){
+            this.price = 0;
+            this.calories = 0;
+            document.querySelector('.hamburger__price').innerHTML = '';
+            document.querySelector('.hamburger__calories').innerHTML = '';
+        }
+        writeResult(){
+            document.querySelector('.hamburger__info').style.opacity = '1';
+            document.querySelector('.hamburger__price').insertAdjacentHTML('beforeend', this.price);
+            document.querySelector('.hamburger__calories').insertAdjacentHTML('beforeend', this.calories);
+        }
+
+        getSize(){
+            let radio = document.querySelector('input[name=size]:checked');
+
+            this.price = this.topping.find(topping => topping.name === radio.id).price;
+            this.calories = this.topping.find(topping => topping.name === radio.id).calories;
+
+        }
+        getTopping(){
+            let toppingsChecked = document.querySelectorAll('input[name=topping]:checked');
+
+            toppingsChecked.forEach(top => {
+                this.price += this.topping.find(topping => topping.name === top.id).price;
+                this.calories += this.topping.find(topping => topping.name === top.id).calories;
+            })
+
+        }
+        btnClick(){
+           const btn = document.getElementById('orderBtn');
+            //const btn = document.querySelector('.hamburger__form');
+            btn.addEventListener('click', () => {
+                this.reset();
+                this.getSize();
+                this.getTopping();
+                this.writeResult();
+                this.changeForm();
+            })
+        }
+        changeForm(){
+            const form = document.querySelector('.hamburger__form');
+            form.addEventListener('click', () => {
+                this.reset();
+                this.getSize();
+                this.getTopping();
+                this.writeResult();
+
+            })
+        }
+    }
+
+    new Hamburger();
+</script>
+</body>
+</html>
