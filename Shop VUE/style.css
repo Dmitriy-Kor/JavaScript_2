@@ -184,9 +184,10 @@ body {
   border: 1px solid #415A80;
 }
 
-.show {
+.visible {
   display: block;
 }
+
 .invisible {
   display: none;
 }

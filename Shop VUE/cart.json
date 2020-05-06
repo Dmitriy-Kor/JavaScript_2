@@ -4,13 +4,15 @@
       "id_product": 123,
       "product_name": "Ноутбук",
       "price": 45600,
-      "quantity": 1
+      "quantity": 1,
+      "img": "https://via.placeholder.com/160x110/"
     },
     {
       "id_product": 456,
       "product_name": "Мышка",
       "price": 1000,
-      "quantity": 1
+      "quantity": 1,
+      "img": "https://via.placeholder.com/160x110/"
     },
     {
       "id_product": 333,
