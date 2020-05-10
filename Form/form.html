@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="Ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<form class="form" action="#">
+    <label>
+        <input type="text" class="form__input form__name" name="name" placeholder="Василий">
+        <p class="form__message" data-name="name">Введите ваше имя.</p>
+    </label>
+    <label>
+        <input type="text" class="form__input form__phone" name="phone" placeholder="+7(000)000-0000.">
+        <p class="form__message" data-name="phone">Введите номер телефона.</p>
+    </label>
+    <label>
+        <input type="text" class="form__input form__email" name="email" placeholder="mymail@mail.ru">
+        <p class="form__message" data-name="email">Введите ваш email.</p>
+    </label>
+    <label>
+        <textarea type="text" class="form__text" name="text">Ваше сообщение</textarea>
+        <p class="form__message" data-name="text">Напишите ваше сообщение.</p>
+    </label>
+        <input type="submit" class="form__btn" value="Валидировать!">
+</form>
+
+<script src="app.js"></script>
+<script>
+    window.onload = () => {
+        const formEl = document.querySelector('.form');
+        let userForm = new Form(formEl);
+    };
+</script>
+</body>
+</html>
