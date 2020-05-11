@@ -12,49 +12,18 @@
     <header>
         <div class="head center" >
             <div class="head__logo"><a href="#" class="head__link">Logo</a></div>
-            <form action="#" class="head__search-form">
-                <input type="text" class="head__search" v-model="searchLine"><button type="submit" class="head__btn_search" @click="filter(searchLine)"><i class="fas fa-search"></i></button>
-            </form>
-            <div class="head__cart">
-            <button type="button" class="head__btn" @click="cartVisibility=!cartVisibility">Корзина</button>
-            <div class="cart" :class="{invisible: !cartVisibility, visible: cartVisibility}">
-                <h3 class="cart__title">Товары:</h3>
-                <div class="cart__items" v-if="!serverErrors.cart">
-                    <div class="item-in-cart" v-for="product of goods.cartGoods" :key="product.id_product" :data-id="product.id_product">
-                    <div class="item-in-cart__box">
-                        <img :src="product.img" :alt="product.product_name" class="item-in-cart__img">
-                        <div class="item-in-cart__info">
-                            <h3 class="item-in-cart__title">{{product.product_name}}</h3>
-                            <p class="item-in-cart__quantity">Колличество: {{product.quantity}}</p>
-                            <p class="item-in-cart__price">{{product.price * product.quantity}} &#x20BD</p>
-                        </div>
-                        <button class="item-in-cart__btnCross" @click="removeProduct($event)" :data-id="product.id_product"><i class="fas fa-times"></i></button>
-                    </div>
-                </div>
-                </div>
-                <h2 class="cart__error" v-else>Ошибка сервера:(</h2>
-                <h3 class="cart__sum">Сумма:<span class="cart__price">{{calcSumAll()}}</span>&#x20BD</h3>
-            </div>
-            </div>
+            <search></search>
+            <cart ref="cart"></cart>
         </div>
     </header>
     <main class="center">
-        <div class="products paddingLR" v-if="!serverErrors.catalog">
-            <div class="product-item" v-for="product of goods.catalogGoods" :key="product.id_product" :data-name="product.product_name">
-                <img class="product-item__img" :src="product.img">
-                <div class="product-item__info">
-                    <div>
-                        <h3 class="product-item__title">{{product.product_name}}</h3>
-                        <p class="product-item__price">{{product.price}}</p>
-                    </div>
-                    <button class="by-btn" @click="addProduct($event)" :data-id="product.id_product" :data-img="product.img" :data-name="product.product_name" :data-price="product.price">Добавить в корзину</button>
-                </div>
-            </div>
-        </div>
-        <h2 class="catalog__error paddingLR" v-else>Ошибка сервера:(</h2>
-</main>
+        <products ref="products"></products>
+    </main>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/app_vue.js"></script>
+<script src="js/carts.js"></script>
+<script src="js/products.js"></script>
+<script src="js/search.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
