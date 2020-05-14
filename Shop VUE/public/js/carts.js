@@ -30,48 +30,50 @@ Vue.component('cart',{
             return this.cartGoods.reduce((sum, product) => sum + product.price * product.quantity, 0);
         },
 
-        /**
-         * метод добавляет товар в корзину
-         * @param element
-         */
-        addProduct(element) {
-            this.$root._getDataFromServer(`${API}/addToBasket.json`)
-                .then(data => {
-                    //проверка ответа
-                    if (data.result === 1){
-                        //let id = element.target.dataset["id"];
-                        let foundProduct = this.cartGoods.find(product => product.id_product === +element.id_product);
-                        if (foundProduct) {
-                            foundProduct.quantity ++;
-                        } else {
-                            let newProduct = Object.assign({quantity: 1}, element)
-                            this.cartGoods.push(newProduct);
+        addProduct(element){
+            let foundProduct = this.cartGoods.find( product => product.id_product === +element.id_product)
+            if (foundProduct) {
+                this.$root.putJson(`/api/cart/${foundProduct.id_product}`, {quantity: 1});
+                foundProduct.quantity++;
+                this.sendStats(foundProduct,'Увеличено количество этого товара')
+            } else {
+                let newAddProduct = Object.assign({quantity: 1}, element);
+                this.$root.postJson('/api/cart/', newAddProduct)
+                    .then(data => {
+                        if (data.result === 1) {
+                            this.cartGoods.push(newAddProduct);
+                            this.sendStats(newAddProduct,'Добавлен этот товар');
                         }
-                    }
-                }).catch(error => {
-                console.log(error)});
-
+                    });
+            }
             // показывает корзину когда добовляют товар
             document.querySelector('.cart').classList.add('visible');
             document.querySelector('.cart').classList.remove('invisible');
             this.cartVisibility = true;
         },
 
-        /**
-         * метод удаляет товар из корзины
-         * @param element
-         */
-        removeProduct(element) {
-            this.$root._getDataFromServer(`${API}/deleteFromBasket.json`)
-                .then(data => {
-                    if (data.result === 1){
+        sendStats(element, message){
+            let stat = Object.assign({action: message}, element)
+            this.$root.postJson('/api/stats', stat).then(data => {
+                    if (data.result === 1) {
+                        console.log('send stat');
+                    }
+            })
+        },
 
-                        let foundProduct = this.cartGoods.find(product => product.id_product === +element.id_product);
-                        if (foundProduct.quantity > 1) {
-                            foundProduct.quantity --;
-                        } else {
+        removeProduct(element){
+            let foundProduct = this.cartGoods.find( product => product.id_product === +element.id_product)
+            if (foundProduct.quantity > 1) {
+                this.$root.putJson(`/api/cart/${foundProduct.id_product}`, {quantity: -1});
+                foundProduct.quantity--;
+                this.sendStats(foundProduct,'Уменьшено количество этого товара')
+            } else {
+                this.$root.delJson(`/api/cart/${foundProduct.id_product}`, foundProduct)
+                    .then(data => {
+                        if (data.result === 1) {
                             let index =this.cartGoods.indexOf(foundProduct)
                             this.cartGoods.splice(index, 1);
+                            this.sendStats(foundProduct,'Удален этот товар');
 
                             // скрывает корзину если она пуста
                             if (this.cartGoods.length === 0){
@@ -79,12 +81,9 @@ Vue.component('cart',{
                                 document.querySelector('.cart').classList.add('invisible');
                                 this.cartVisibility = false;
                             }
-
-                        };
-                    }
-                }).catch(error => {
-                console.log(error)});
-
+                        }
+            })
+            }
         },
 
         /**
@@ -100,7 +99,7 @@ Vue.component('cart',{
     },
 
     mounted(){
-        this.$root._getDataFromServer('cart.json').then(data => {
+        this.$root.getJson('/api/cart').then(data => {
             this._workingWithData(data.contents);
         }).catch(error => {
             console.log(error);
@@ -108,7 +107,6 @@ Vue.component('cart',{
         });
     }
 })
-
 
 
 Vue.component('cartItem',{

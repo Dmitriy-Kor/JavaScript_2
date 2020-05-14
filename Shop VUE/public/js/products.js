@@ -28,7 +28,7 @@ Vue.component('products', {
 
     },
     mounted() {
-        this.$root._getDataFromServer('catalog.json').then(data => {
+        this.$parent.getJson('/api/products').then(data => {
             this._workingWithData(data);
         }).catch(error => {
             console.log(error);
