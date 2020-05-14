@@ -14,3 +14,7 @@ Form/.idea/
 RegExp/.idea/
 
 Shop VUE/.idea/
+
+*.xml
+
+Shop VUE/node_modules/
