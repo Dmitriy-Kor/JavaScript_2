@@ -27,7 +27,7 @@ app.post('/api/stats', (req, res) => {
     let stat = Object.assign({time: moment().format('MMMM Do YYYY, h:mm:ss a')}, req.body);
     stat = JSON.stringify(stat, null, 4)
     console.log(stat);
-    stats.push(stat);
+    stats.push(stat); // не записывается в массив
     console.log(stats);
     fs.writeFile('./server/db/stats.json',stats, (err) => {
         if (err) {
